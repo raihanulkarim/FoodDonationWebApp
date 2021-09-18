@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace FoodDonation.Data
 {
 
@@ -23,7 +22,8 @@ namespace FoodDonation.Data
                 UserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
                 EmailConfirmed = true,
-                PhoneNumberConfirmed = true
+                PhoneNumberConfirmed = true,
+                FullName="John Smith"
              };
             if (userManager.Users.All(u => u.Id != defaultUser.Id))
             {
@@ -32,8 +32,6 @@ namespace FoodDonation.Data
                 {
                     await userManager.CreateAsync(defaultUser, "Wow123!");
                     await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Admin.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Charity.ToString());
-                    await userManager.AddToRoleAsync(defaultUser, Enums.Roles.Donor.ToString());
                 }
             }
         }
